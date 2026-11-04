@@ -1,0 +1,13 @@
+/* Hover/active/focus styles from the legacy style-hover attributes. */
+.lxp0:hover{background:#363636 !important;color:#FFFFFF !important}
+.lxp1:active{transform:translateY(0.5px) !important}
+.lxp2:hover{background:transparent !important;color:#FFFFFF !important}
+.lxp3:hover{opacity:0.65 !important}
+.lxp4:hover{border-color:#000000 !important}
+.lxp5:hover{background:#F8F8F8 !important}
+.lxp6:hover{background:#363636 !important}
+.lxp7:hover{background:#FFFFFF !important}
+.lxp8:hover{background:rgba(255,255,255,0.75) !important}
+.lxp9:hover{background:#000000 !important;color:#FFFFFF !important}
+.lxp10:hover{opacity:1 !important;transform:scale(1.06) !important}
+.lxp11:hover{background:#FFFFFF !important;color:#000000 !important}
