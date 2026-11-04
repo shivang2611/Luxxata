@@ -1,7 +1,7 @@
 'use client';
 // Generated from the legacy template's isHome block.
 import { Fragment } from 'react';
-import { t, at } from '../runtime';
+import { $t, $at, $css } from '../runtime';
 import Img from '../Img';
 import TripCardSV from '../TripCardSV';
 import { useLx } from '../context';
@@ -17,8 +17,8 @@ export default function HomeView() {
           {(v.frames || []).map((f, $index) => (
             <Fragment key={$index}>
               {" "}
-              <div style={{ position: "absolute", inset: "0", display: "flex", alignItems: "flex-start", justifyContent: "flex-end", padding: "32px clamp(20px,6vw,96px)", opacity: `${t(f?.op)}`, transition: "opacity 420ms cubic-bezier(0.32,0.72,0.32,1)" }}>
-                <Img src={at(f?.img)} alt={at(f?.ph)} loading={$index === 0 ? 'eager' : 'lazy'} fetchPriority={$index === 0 ? 'high' : undefined} sizes="100vw" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+              <div style={{ position: "absolute", inset: "0", display: "flex", alignItems: "flex-start", justifyContent: "flex-end", padding: "32px clamp(20px,6vw,96px)", opacity: `${$t(f?.op)}`, transition: "opacity 420ms cubic-bezier(0.32,0.72,0.32,1)" }}>
+                <Img src={$at(f?.img)} alt={$at(f?.ph)} loading={$index === 0 ? 'eager' : 'lazy'} fetchPriority={$index === 0 ? 'high' : undefined} sizes="100vw" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
               {" "}
             </Fragment>
@@ -49,16 +49,16 @@ export default function HomeView() {
             </div>
             <div data-hcap="" style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end", textAlign: "right" }}>
               <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>
-                {t(v.frame?.num)}{" / 05"}
+                {$t(v.frame?.num)}{" / 05"}
               </span>
               <span style={{ fontFamily: "var(--font-merriweather),Georgia,serif", fontStyle: "italic", fontSize: "22px", lineHeight: "1.2" }}>
-                {t(v.frame?.title)}
+                {$t(v.frame?.title)}
               </span>
               {v.showCoords ? (
                 <>
                   {" "}
                   <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>
-                    {t(v.frame?.coord)}
+                    {$t(v.frame?.coord)}
                   </span>
                   {" "}
                 </>
@@ -71,12 +71,12 @@ export default function HomeView() {
           {(v.frames || []).map((f, $index) => (
             <Fragment key={$index}>
               {" "}
-              <button onClick={f?.go} style={{ background: "none", border: "none", borderTop: `1px solid ${t(f?.bd)}`, padding: "16px 0 0", textAlign: "left", display: "flex", flexDirection: "column", gap: "4px", transition: "border-color 420ms" }}>
+              <button onClick={f?.go} style={{ background: "none", border: "none", borderTop: `1px solid ${$t(f?.bd)}`, padding: "16px 0 0", textAlign: "left", display: "flex", flexDirection: "column", gap: "4px", transition: "border-color 420ms" }}>
                 <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#939393" }}>
-                  {t(f?.num)}
+                  {$t(f?.num)}
                 </span>
-                <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "13px", color: `${t(f?.fg)}` }}>
-                  {t(f?.short)}
+                <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "13px", color: `${$t(f?.fg)}` }}>
+                  {$t(f?.short)}
                 </span>
               </button>
               {" "}
@@ -103,7 +103,7 @@ export default function HomeView() {
             Five journeys, five different reasons to go.
           </h2>
           <button onClick={v.goCatalogue} style={{ background: "none", border: "none", borderBottom: "1px solid #000000", padding: "0 0 2px", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase" }}>
-            {"Compare all "}{t(v.tripCount)}{" trips"}
+            {"Compare all "}{$t(v.tripCount)}{" trips"}
           </button>
         </div>
         {" "}
@@ -141,7 +141,7 @@ export default function HomeView() {
                 <Fragment key={$index}>
                   {" "}
                   <button onClick={o?.pick} style={{ height: "48px", padding: "0 20px", background: "#FFFFFF", border: "1px solid #ABABAB", borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "13px", color: "#000000" }} className="lxp4">
-                    {t(o?.label)}
+                    {$t(o?.label)}
                   </button>
                   {" "}
                 </Fragment>
@@ -177,21 +177,21 @@ export default function HomeView() {
               {" "}
               <figure style={{ margin: "0", padding: "40px 32px", borderLeft: "1px solid #E5E5E5", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "20px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                  <Img src={at(q?.img)} alt={at(q?.who)} loading="lazy" style={{ width: "64px", height: "64px", borderRadius: "5px", objectFit: "cover", display: "block", flex: "none", background: "#F3F3F3" }} />
+                  <Img src={$at(q?.img)} alt={$at(q?.who)} loading="lazy" style={{ width: "64px", height: "64px", borderRadius: "5px", objectFit: "cover", display: "block", flex: "none", background: "#F3F3F3" }} />
                   <span style={{ display: "flex", flexDirection: "column", gap: "4px", fontFamily: "var(--font-outfit),sans-serif" }}>
                     <span style={{ fontSize: "15px", letterSpacing: "2px", color: "#F5B50A" }}>
                       ★★★★★
                     </span>
                     <span style={{ fontWeight: "500", fontSize: "13px" }}>
-                      {t(q?.rating)}
+                      {$t(q?.rating)}
                     </span>
                   </span>
                 </div>
                 <blockquote style={{ margin: "0", fontSize: "18px", lineHeight: "1.45", fontStyle: "italic", textWrap: "pretty" }}>
-                  “{t(q?.text)}”
+                  “{$t(q?.text)}”
                 </blockquote>
                 <figcaption style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#363636" }}>
-                  {t(q?.who)}
+                  {$t(q?.who)}
                 </figcaption>
               </figure>
               {" "}

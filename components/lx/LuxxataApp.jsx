@@ -5,6 +5,8 @@ import { Component } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { IMG, B, PL, COLLS, TRIP_IMGS, DESK, REV_PH, TRIP_REVS, REVIEWS, LENMAP, TRIPS, FRAMES, STEPS, fmt, chip, L, G } from '@/lib/data';
 import { pathFor, routeFor } from '@/lib/routes';
+import { newRef, sendLead } from '@/lib/leads';
+import { PHONE_HINT, isIndianMobile } from '@/lib/phone';
 import { LxContext } from './context';
 import Shell from './Shell.generated';
 
@@ -94,8 +96,13 @@ class Luxxata extends Component {
     const catTrips = TRIPS.filter(t => (s.catColl === 'all' || t.colls.includes(s.catColl)) && (s.catLen === 'all' || t.len === s.catLen));
     const e = s.enq, eTrip = TRIPS.find(t => t.id === e.trip), eColl = COLLS.find(c => c.id === e.coll);
     const NEXT = [{ num:'01', text:'A planner reads your brief and replies personally within one working day.' }, { num:'02', text:'Your proposal: route, named stays, inclusions and an exact price.' }, { num:'03', text:'Refine anything, then confirm and pay under clear booking terms.' }];
-    const field = (k, label, type, ph) => ({ label, type, ph, value: e[k], bd: s.err && ((k === 'name' && !e.name) || (k === 'email' && !/@/.test(e.email))) ? '#8c1c13' : '#939393', onChange: ev => this.setEnq(k, ev.target.value) });
-    const popOk = !!s.pop.name.trim() && s.pop.phone.replace(/\D/g,'').length >= 7 && (!s.pop.email.trim() || /@/.test(s.pop.email));
+    // Full name, email and phone are all required on the enquiry form.
+    const invalid = { name: !e.name.trim(), email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.email.trim()), phone: !isIndianMobile(e.phone) };
+    // Shown under a phone field while it holds something that isn't yet a valid mobile number.
+    const phoneHint = (raw) => (String(raw).trim() && !isIndianMobile(raw) ? PHONE_HINT : '');
+    const canSend = !invalid.name && !invalid.email && !invalid.phone;
+    const field = (k, label, type, ph) => ({ label, type, ph, value: e[k], hint: k === 'phone' ? phoneHint(e.phone) : '', bd: s.err && invalid[k] ? '#8c1c13' : '#939393', onChange: ev => this.setEnq(k, ev.target.value) });
+    const popOk = !!s.pop.name.trim() && isIndianMobile(s.pop.phone) && (!s.pop.email.trim() || /@/.test(s.pop.email));
     const finderSum = Object.values(s.fAns).map(a => a.label).join(' · ');
     return {
       isHome: P === 'home', isCollections: P === 'collections', isCollection: P === 'collection', isCatalogue: P === 'catalogue', isTrip: P === 'trip', isFinder: P === 'finder', isEnquiry: P === 'enquiry',
@@ -107,13 +114,19 @@ class Luxxata extends Component {
       rev: REVIEWS[(s.tick + s.rvOff) % 4], revDots: REVIEWS.map((x, k) => ({ label: 'Review ' + (k + 1), w: k === (s.tick + s.rvOff) % 4 ? 18 : 6, bg: k === (s.tick + s.rvOff) % 4 ? '#000000' : '#ABABAB', pick: () => this.setState(z => ({ rvOff: (k - z.tick % 4 + 4) % 4 })) })),
       popOpen: s.popOpen, popForm: !s.popSent, popSent: s.popSent, popErr: s.popErr, pop: s.pop,
       popBlocked: !popOk, popBg: popOk ? '#000000' : '#ABABAB', popCur: popOk ? 'pointer' : 'not-allowed', waBottom: P === 'trip' && s.stuck ? '88px' : '24px',
-      nameBd: '#939393', emailBd: s.pop.email.trim() && !/@/.test(s.pop.email) ? '#8c1c13' : '#939393', phoneBd: '#939393',
+      nameBd: '#939393', emailBd: s.pop.email.trim() && !/@/.test(s.pop.email) ? '#8c1c13' : '#939393', phoneBd: '#939393', popPhoneHint: phoneHint(s.pop.phone),
       onName: ev => { const v = ev.target.value; this.setState(x => ({ pop:{ ...x.pop, name:v } })); },
       onEmail: ev => { const v = ev.target.value; this.setState(x => ({ pop:{ ...x.pop, email:v } })); },
       onPhone: ev => { const v = ev.target.value; this.setState(x => ({ pop:{ ...x.pop, phone:v } })); },
       onNotes: ev => { const v = ev.target.value; this.setState(x => ({ pop:{ ...x.pop, notes:v } })); },
       closePop: () => { try { sessionStorage.setItem('lxPop','1'); } catch (e) {} this.setState({ popOpen:false }); },
-      submitPop: ev => { ev && ev.preventDefault && ev.preventDefault(); const p = s.pop; if (!p.name.trim() || p.phone.replace(/\D/g,'').length < 7 || (p.email.trim() && !/@/.test(p.email))) return; try { sessionStorage.setItem('lxPop','1'); } catch (e) {} this.setState({ popSent:true, popErr:false }); },
+      viewTrips: () => { this.setState({ popOpen: false }); this.go('catalogue'); },
+      submitPop: ev => { ev && ev.preventDefault && ev.preventDefault(); const p = s.pop; if (!p.name.trim() || !isIndianMobile(p.phone) || (p.email.trim() && !/@/.test(p.email))) return; if (s.popSending) return; this.setState({ popSending: true, popErr: false });
+        sendLead({ source: 'Popup', ref: newRef('POP'), name: p.name, email: p.email, phone: p.phone, notes: p.notes }).then(ok => {
+          if (!ok) return this.setState({ popSending: false, popErr: true });
+          try { sessionStorage.setItem('lxPop','1'); } catch (e) {}
+          this.setState({ popSent: true, popSending: false });
+        }); },
       nav: navMap.map(([label, to, act]) => ({ label, bd: act.includes(P) ? G : 'transparent', go: () => { const [pg, a] = to.split(':'); this.go(pg, {}, a); } })),
       goHome: () => this.go('home'), goCatalogue: () => this.go('catalogue'), goCollections: () => this.go('collections'), goFinder: () => this.go('finder'),
       goEnquiry: () => this.enquire({}), 
@@ -188,10 +201,20 @@ class Luxxata extends Component {
       counters: [['Adults','adults',1],['Children','children',0]].map(([label, k, min]) => ({ label, v: e[k], dec: () => this.setEnq(k, Math.max(min, e[k] - 1)), inc: () => this.setEnq(k, Math.min(20, e[k] + 1)) })),
       chipGroups: [['04 · When','when',['Oct – Dec','Jan – Mar','Apr – Jun','Jul – Sep','Not sure yet']],['05 · Length','length',['4–6 nights','7–8 nights']],['06 · Budget per person','budget',['Under ₹2 lakh','₹2 – 3.5 lakh','₹3.5 – 5 lakh','₹5 lakh +','Help me decide']]]
         .map(([label, k, list]) => ({ label, chips: list.map(l => chip(l, e[k] === l, () => this.setEnq(k, e[k] === l ? '' : l))) })),
-      fields: [field('name','Full name','text','Your name'), field('email','Email','email','name@email.com'), field('phone','Phone (optional)','tel','+91')],
+      fields: [field('name','Full name','text','Your name'), field('email','Email','email','name@email.com'), field('phone','Mobile number','tel','10-digit mobile')],
       summary: [{ k:'Trip', v: eTrip ? eTrip.name : 'Help me choose' }, { k:'Traveller type', v: e.traveller || 'Not specified' }, { k:'Planning', v: e.forWhom }, { k:'Travellers', v: e.adults + ' adults' + (e.children ? ', ' + e.children + ' children' : '') }, { k:'When', v: e.when || '—' }, { k:'Budget', v: e.budget || '—' }],
-      submit: () => { if (!e.name || !/@/.test(e.email)) return this.setState({ err: true }); this.setState({ sent: true, err: false }); window.scrollTo(0, 0); },
-      ref: 'LX-' + (eTrip ? eTrip.id.slice(0, 3).toUpperCase() : 'GEN') + '-2610', firstName: (e.name || '').split(' ')[0], sentTrip: eTrip ? eTrip.name : 'your Egypt journey',
+      submit: async () => {
+        if (invalid.name || invalid.email || invalid.phone) return this.setState({ err: true });
+        if (s.sending) return;
+        const ref = newRef(eTrip ? eTrip.id.slice(0, 3).toUpperCase() : 'GEN');
+        this.setState({ sending: true, err: false, sendErr: false });
+        const ok = await sendLead({ ...e, source: 'Enquiry form', ref, trip: eTrip ? eTrip.name : 'Help me choose', coll: eColl ? eColl.name : '' });
+        if (!ok) return this.setState({ sending: false, sendErr: true });
+        this.setState({ sent: true, sending: false, ref });
+        window.scrollTo(0, 0);
+      },
+      sendLabel: s.sending ? 'Sending…' : 'Send my brief', canSend, sendBg: canSend ? '#000000' : '#ABABAB', sendCur: canSend ? 'pointer' : 'not-allowed', sendErr: s.sendErr,
+      ref: s.ref, firstName: (e.name || '').split(' ')[0], sentTrip: eTrip ? eTrip.name : 'your Egypt journey',
       footer: [
         { h:'Find Your Egypt', links: COLLS.filter(c => c.status === 'Live').map(c => ({ label: c.name, go: () => this.openColl(c.id) })) },
         { h:'Our Trips', links: [{ label:'All journeys', go: () => this.go('catalogue') }, { label:'Trip finder', go: () => this.go('finder') }, { label:'Plan my trip', go: () => this.enquire({}) }] },

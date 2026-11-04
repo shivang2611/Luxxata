@@ -1,6 +1,6 @@
 // Generated from legacy/js/components.js (TripRouteAnim template).
 import { Fragment } from 'react';
-import { t, at } from './runtime';
+import { $t, $at, $css } from './runtime';
 import Img from './Img';
 
 export default function TripRouteAnimView({ v }) {
@@ -9,13 +9,13 @@ export default function TripRouteAnimView({ v }) {
     <div data-routemap="" style={{ width: "100%", background: "#F3F3F3", borderRadius: "8.4px", padding: "clamp(14px,3.5vw,40px)", boxSizing: "border-box", display: "flex", flexWrap: "wrap", gap: "28px 40px", alignItems: "center" }}>
       <div style={{ position: "relative", containerType: "inline-size", flex: "1 1 440px", minWidth: "0", maxWidth: "700px", width: "100%", margin: "0 auto" }}>
         {" "}
-        <svg viewBox={at(v.vb)} role="img" aria-label="Animated route map" style={{ width: "100%", height: "auto", display: "block", overflow: "visible" }}>
+        <svg viewBox={$at(v.vb)} role="img" aria-label="Animated route map" style={{ width: "100%", height: "auto", display: "block", overflow: "visible" }}>
           <defs>
             <clipPath id="trmclip">
-              <rect x="0" y="0" width={at(v.vw)} height={at(v.vh)} />
+              <rect x="0" y="0" width={$at(v.vw)} height={$at(v.vh)} />
             </clipPath>
           </defs>
-          <g display={at(v.cDisp)}>
+          <g display={$at(v.cDisp)}>
             <rect x="0" y="0" width="700" height="640" fill="#FFFFFF" stroke="#A8A8A8" strokeWidth="1.5" />
             <path d="M0 0 L250 0 L270 130 L240 250 L200 330 L120 420 L90 640 L0 640 Z" fill="#FAF9F7" />
             <path d="M440 0 C430 110 392 190 408 290 C418 370 378 470 388 640 L368 640 C358 470 398 370 388 290 C372 190 410 110 420 0 Z" fill="#E4E4E4" />
@@ -50,7 +50,7 @@ export default function TripRouteAnimView({ v }) {
               </text>
             </g>
           </g>
-          <g display={at(v.eDisp)}>
+          <g display={$at(v.eDisp)}>
             <path d="M20 20 L75 20 L137 34 L159 36 L259 70 L307 50 L344 28 L384 23 L415 25 L434 25 L462 47 L482 54 L517 55 L554 49 L579 39 L597 92 L620 159 L607 197 L593 257 L580 282 L555 269 L533 235 L512 202 L485 167 L467 152 L473 182 L511 232 L540 277 L554 315 L562 349 L597 412 L653 540 L665 589 L702 632 L738 670 L20 670 Z" fill="#FFFFFF" stroke="#A8A8A8" strokeWidth="1.5" strokeLinejoin="round" />
             <path d="M467 152 L510 205 L545 255 L575 285" fill="none" stroke="#E4E4E4" strokeWidth="7" strokeLinecap="round" />
             <path d="M462 47 L465 87 L469 127" fill="none" stroke="#A8A8A8" strokeWidth="1.2" strokeDasharray="1.5 4" />
@@ -76,11 +76,11 @@ export default function TripRouteAnimView({ v }) {
           <g clipPath="url(#trmclip)">
             {(v.legs || []).map((g, $index) => (
               <Fragment key={$index}>
-                <path d={at(g?.d)} fill="none" stroke="#000000" strokeWidth={at(g?.w)} strokeOpacity={at(g?.op)} strokeLinecap="round" strokeLinejoin="round" />
+                <path d={$at(g?.d)} fill="none" stroke="#000000" strokeWidth={$at(g?.w)} strokeOpacity={$at(g?.op)} strokeLinecap="round" strokeLinejoin="round" />
               </Fragment>
             ))}
-            <circle cx={at(v.ringX)} cy={at(v.ringY)} r={at(v.ringR)} fill="none" stroke="#000000" strokeWidth="1.5" opacity={at(v.ringO)} />
-            <g transform={at(v.planeT)} opacity={at(v.planeO)}>
+            <circle cx={$at(v.ringX)} cy={$at(v.ringY)} r={$at(v.ringR)} fill="none" stroke="#000000" strokeWidth="1.5" opacity={$at(v.ringO)} />
+            <g transform={$at(v.planeT)} opacity={$at(v.planeO)}>
               <path d="M16 0 L10 -2 L-2 -12 L-6 -12 L0 -2 L-9 -2 L-12 -6 L-15 -6 L-13 0 L-15 6 L-12 6 L-9 2 L0 2 L-6 12 L-2 12 L10 2 Z" fill="#000000" stroke="#FFFFFF" strokeWidth="1.5" strokeLinejoin="round" />
             </g>
           </g>
@@ -89,14 +89,14 @@ export default function TripRouteAnimView({ v }) {
         {(v.pins || []).map((p, $index) => (
           <Fragment key={$index}>
             {" "}
-            <div style={{ position: "absolute", left: `${t(p?.left)}`, top: `${t(p?.top)}`, width: "0", height: "0", pointerEvents: "none" }}>
+            <div style={{ position: "absolute", left: `${$t(p?.left)}`, top: `${$t(p?.top)}`, width: "0", height: "0", pointerEvents: "none" }}>
               {" "}
-              <span style={{ position: "absolute", left: "-2.8cqw", top: "-2.8cqw", width: "5.6cqw", height: "5.6cqw", borderRadius: "50%", background: `${t(p?.bgc)}`, border: "2px solid #000000", boxSizing: "border-box", color: `${t(p?.fg)}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "500", fontSize: "clamp(11px,2.5cqw,21px)" }}>
-                {t(p?.n)}
+              <span style={{ position: "absolute", left: "-2.8cqw", top: "-2.8cqw", width: "5.6cqw", height: "5.6cqw", borderRadius: "50%", background: `${$t(p?.bgc)}`, border: "2px solid #000000", boxSizing: "border-box", color: `${$t(p?.fg)}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "500", fontSize: "clamp(11px,2.5cqw,21px)" }}>
+                {$t(p?.n)}
               </span>
               {" "}
-              <span style={{ position: "absolute", top: "-1.6cqw", whiteSpace: "nowrap", fontFamily: "var(--font-outfit),sans-serif", fontSize: "clamp(11px,2.8cqw,21px)", lineHeight: "3.2cqw", color: "#000000", background: `${t(p?.bg)}`, padding: `${t(p?.pad)}`, borderRadius: "4px", textShadow: "0 0 3px #FFFFFF,0 0 3px #FFFFFF" }}>
-                {t(p?.label)}
+              <span style={{ position: "absolute", top: "-1.6cqw", ...$css(p?.side), whiteSpace: "nowrap", fontFamily: "var(--font-outfit),sans-serif", fontSize: "clamp(11px,2.8cqw,21px)", lineHeight: "3.2cqw", color: "#000000", background: `${$t(p?.bg)}`, padding: `${$t(p?.pad)}`, borderRadius: "4px", textShadow: "0 0 3px #FFFFFF,0 0 3px #FFFFFF" }}>
+                {$t(p?.label)}
               </span>
               {" "}
             </div>
@@ -104,7 +104,7 @@ export default function TripRouteAnimView({ v }) {
           </Fragment>
         ))}
         {" "}
-        <div style={{ position: "absolute", top: `${t(v.popTop)}%`, transform: "translateY(-50%)", width: "clamp(150px,38%,260px)", background: "#FFFFFF", borderRadius: "8.4px", boxShadow: "0 6px 24px rgba(0,0,0,0.2)", overflow: "hidden", opacity: `${t(v.popO)}`, marginTop: `${t(v.popY)}px`, pointerEvents: "none" }}>
+        <div style={{ position: "absolute", top: `${$t(v.popTop)}%`, ...$css(v.popSide), transform: "translateY(-50%)", width: "clamp(150px,38%,260px)", background: "#FFFFFF", borderRadius: "8.4px", boxShadow: "0 6px 24px rgba(0,0,0,0.2)", overflow: "hidden", opacity: `${$t(v.popO)}`, marginTop: `${$t(v.popY)}px`, pointerEvents: "none" }}>
           {" "}
           <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 10", background: "#E4E4E4" }}>
             {" "}
@@ -113,7 +113,7 @@ export default function TripRouteAnimView({ v }) {
                 {" "}
                 {p?.u ? (
                   <>
-                    <Img src={at(p?.u)} alt={at(p?.cap)} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: `${t(p?.op)}`, transition: "opacity 350ms ease" }} />
+                    <Img src={$at(p?.u)} alt={$at(p?.cap)} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: `${$t(p?.op)}`, transition: "opacity 350ms ease" }} />
                   </>
                 ) : null}
                 {" "}
@@ -124,13 +124,13 @@ export default function TripRouteAnimView({ v }) {
           {" "}
           <div style={{ padding: "10px 12px 12px", display: "flex", flexDirection: "column", gap: "4px" }}>
             <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "500", fontSize: "10px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#939393" }}>
-              {t(v.popKicker)}
+              {$t(v.popKicker)}
             </span>
             <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontSize: "clamp(13px,1.6vw,16px)", lineHeight: "1.2" }}>
-              {t(v.popTitle)}
+              {$t(v.popTitle)}
             </span>
-            <span style={{ display: `${t(v.textDisp)}`, fontSize: "12px", lineHeight: "1.5", color: "#363636" }}>
-              {t(v.popText)}
+            <span style={{ display: `${$t(v.textDisp)}`, fontSize: "12px", lineHeight: "1.5", color: "#363636" }}>
+              {$t(v.popText)}
             </span>
           </div>
           {" "}
@@ -143,7 +143,7 @@ export default function TripRouteAnimView({ v }) {
             Your route · day by day
           </span>
           <button onClick={v.toggleAll} style={{ background: "none", border: "none", borderBottom: "1px solid #000000", padding: "0 0 2px", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#000000" }}>
-            {t(v.allLabel)}
+            {$t(v.allLabel)}
           </button>
         </div>
         <div style={{ borderTop: "1px solid #000000" }}>
@@ -151,38 +151,38 @@ export default function TripRouteAnimView({ v }) {
           {(v.dayRows || []).map((d, $index) => (
             <Fragment key={$index}>
               {" "}
-              <div style={{ borderBottom: "1px solid #ABABAB", background: `${t(d?.bg)}`, transition: "background 300ms ease" }}>
+              <div style={{ borderBottom: "1px solid #ABABAB", background: `${$t(d?.bg)}`, transition: "background 300ms ease" }}>
                 {" "}
                 <button onClick={d?.toggle} style={{ width: "100%", display: "grid", gridTemplateColumns: "52px 1fr auto", gap: "12px", alignItems: "center", padding: "14px 0", background: "none", border: "none", textAlign: "left", color: "#000000" }}>
-                  <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: `${t(d?.w)}`, fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase" }}>
-                    {"Day "}{t(d?.n)}
+                  <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: `${$t(d?.w)}`, fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                    {"Day "}{$t(d?.n)}
                   </span>
                   <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
                     <span style={{ fontSize: "17px", lineHeight: "1.3" }}>
-                      {t(d?.title)}
+                      {$t(d?.title)}
                     </span>
                     <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "12px", color: "#939393" }}>
-                      {t(d?.place)}
+                      {$t(d?.place)}
                     </span>
                   </span>
                   <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "20px", width: "18px", textAlign: "center" }}>
-                    {t(d?.sign)}
+                    {$t(d?.sign)}
                   </span>
                 </button>
                 {" "}
-                <div style={{ display: "grid", gridTemplateRows: `${t(d?.rows)}`, transition: "grid-template-rows 350ms ease" }}>
+                <div style={{ display: "grid", gridTemplateRows: `${$t(d?.rows)}`, transition: "grid-template-rows 350ms ease" }}>
                   <div style={{ minHeight: "0", overflow: "hidden" }}>
                     {" "}
                     <div style={{ padding: "0 0 18px 64px", display: "flex", flexDirection: "column", gap: "12px" }}>
                       <p style={{ margin: "0", fontSize: "14px", lineHeight: "1.65", color: "#111111" }}>
-                        {t(d?.body)}
+                        {$t(d?.body)}
                       </p>
                       <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                         <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "12px", padding: "6px 10px", background: "#FFFFFF", borderRadius: "52.5px" }}>
-                          {"Walking · "}{t(d?.walk)}
+                          {"Walking · "}{$t(d?.walk)}
                         </span>
                         <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "12px", padding: "6px 10px", background: "#FFFFFF", borderRadius: "52.5px" }}>
-                          {"Free time · "}{t(d?.free)}
+                          {"Free time · "}{$t(d?.free)}
                         </span>
                       </div>
                     </div>

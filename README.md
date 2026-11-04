@@ -21,3 +21,10 @@ Set `NEXT_PUBLIC_SITE_URL` (e.g. `https://example.com`) in Vercel so canonical U
 | `components/lx/views/*View.jsx` | Page markup. `Shell.generated.jsx` is the header, popup, WhatsApp button and footer. |
 | `public/images/` | WebP images; `u/` holds the self-hosted Unsplash photos. Regenerate with `bun scripts/optimize-images.mjs`. |
 | `legacy/` | The previous hand-rolled SPA, kept for reference until the migration is signed off. |
+
+## Leads sheet
+
+"Send my brief" and the popup form post to `/api/enquiry`, which appends a row to the
+"Amira Meta Leads" Google Sheet through a small Apps Script web app. Setup steps are at the
+top of `scripts/sheets-webhook.gs`; then set `SHEETS_WEBHOOK_URL` and `SHEETS_WEBHOOK_SECRET`
+(see `.env.example`). Without them the form shows a "couldn't send" message.

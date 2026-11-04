@@ -1,7 +1,7 @@
 'use client';
 // Generated from the legacy template's isCatalogue block.
 import { Fragment } from 'react';
-import { t, at } from '../runtime';
+import { $t, $at, $css } from '../runtime';
 import TripCardSV from '../TripCardSV';
 import { useLx } from '../context';
 
@@ -21,7 +21,7 @@ export default function CatalogueView() {
             Every curated journey.
           </h1>
           <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "12px", color: "#363636" }}>
-            {t(v.catCount)}
+            {$t(v.catCount)}
           </span>
         </div>
         {" "}
@@ -34,8 +34,8 @@ export default function CatalogueView() {
               {(v.catColls || []).map((c, $index) => (
                 <Fragment key={$index}>
                   {" "}
-                  <button onClick={c?.pick} style={{ height: "32px", padding: "0 12px", background: `${t(c?.bg)}`, color: `${t(c?.fg)}`, border: `1px solid ${t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12px" }}>
-                    {t(c?.label)}
+                  <button onClick={c?.pick} style={{ height: "32px", padding: "0 12px", background: `${$t(c?.bg)}`, color: `${$t(c?.fg)}`, border: `1px solid ${$t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12px" }}>
+                    {$t(c?.label)}
                   </button>
                   {" "}
                 </Fragment>
@@ -50,8 +50,8 @@ export default function CatalogueView() {
               {(v.catLens || []).map((c, $index) => (
                 <Fragment key={$index}>
                   {" "}
-                  <button onClick={c?.pick} style={{ height: "32px", padding: "0 12px", background: `${t(c?.bg)}`, color: `${t(c?.fg)}`, border: `1px solid ${t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12px" }}>
-                    {t(c?.label)}
+                  <button onClick={c?.pick} style={{ height: "32px", padding: "0 12px", background: `${$t(c?.bg)}`, color: `${$t(c?.fg)}`, border: `1px solid ${$t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12px" }}>
+                    {$t(c?.label)}
                   </button>
                   {" "}
                 </Fragment>

@@ -1,7 +1,7 @@
 'use client';
 // Generated from the legacy template's isFinder block.
 import { Fragment } from 'react';
-import { t, at } from '../runtime';
+import { $t, $at, $css } from '../runtime';
 import TripCardSV from '../TripCardSV';
 import { useLx } from '../context';
 
@@ -25,16 +25,16 @@ export default function FinderView() {
               {(v.stepList || []).map((s, $index) => (
                 <Fragment key={$index}>
                   {" "}
-                  <button onClick={s?.go} style={{ width: "100%", display: "grid", gridTemplateColumns: "32px 1fr", gap: "8px", padding: "12px 0", background: "none", border: "none", borderBottom: "1px solid #E5E5E5", textAlign: "left", color: `${t(s?.fg)}` }}>
+                  <button onClick={s?.go} style={{ width: "100%", display: "grid", gridTemplateColumns: "32px 1fr", gap: "8px", padding: "12px 0", background: "none", border: "none", borderBottom: "1px solid #E5E5E5", textAlign: "left", color: `${$t(s?.fg)}` }}>
                     <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", paddingTop: "4px" }}>
-                      {t(s?.num)}
+                      {$t(s?.num)}
                     </span>
                     <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
                       <span style={{ fontSize: "14px" }}>
-                        {t(s?.label)}
+                        {$t(s?.label)}
                       </span>
                       <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12px", color: "#000000" }}>
-                        {t(s?.answer)}
+                        {$t(s?.answer)}
                       </span>
                     </span>
                   </button>
@@ -52,28 +52,28 @@ export default function FinderView() {
                 <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#363636" }}>
                     <span>
-                      {"Question "}{t(v.stepNum)}{" of 05"}
+                      {"Question "}{$t(v.stepNum)}{" of 05"}
                     </span>
                     <button onClick={v.fBack} style={{ background: "none", border: "none", padding: "0", font: "inherit", color: "#363636" }}>
                       ← Back
                     </button>
                   </div>
                   <div style={{ height: "1px", background: "#E5E5E5" }}>
-                    <div style={{ height: "1px", background: "#000000", width: `${t(v.progress)}`, transition: "width 400ms" }} />
+                    <div style={{ height: "1px", background: "#000000", width: `${$t(v.progress)}`, transition: "width 400ms" }} />
                   </div>
                   <h2 style={{ fontFamily: "var(--font-outfit),sans-serif", margin: "16px 0 8px", fontWeight: "400", fontSize: "clamp(32px,4vw,48px)", lineHeight: "1.1" }}>
-                    {t(v.question)}
+                    {$t(v.question)}
                   </h2>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,220px),1fr))", gap: "8px" }}>
                     {(v.options || []).map((o, $index) => (
                       <Fragment key={$index}>
                         {" "}
-                        <button onClick={o?.pick} style={{ minHeight: "64px", padding: "16px 20px", background: `${t(o?.bg)}`, color: `${t(o?.fg)}`, border: `1px solid ${t(o?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", textAlign: "left", display: "flex", flexDirection: "column", gap: "4px", transition: "all 200ms" }} className="lxp4">
+                        <button onClick={o?.pick} style={{ minHeight: "64px", padding: "16px 20px", background: `${$t(o?.bg)}`, color: `${$t(o?.fg)}`, border: `1px solid ${$t(o?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", textAlign: "left", display: "flex", flexDirection: "column", gap: "4px", transition: "all 200ms" }} className="lxp4">
                           <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "13px" }}>
-                            {t(o?.label)}
+                            {$t(o?.label)}
                           </span>
                           <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "12px", opacity: ".75" }}>
-                            {t(o?.sub)}
+                            {$t(o?.sub)}
                           </span>
                         </button>
                         {" "}
@@ -102,8 +102,8 @@ export default function FinderView() {
                       <Fragment key={$index}>
                         {" "}
                         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                          <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: `${t(t?.matchC)}` }}>
-                            {t(t?.match)}
+                          <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: `${$t(t?.matchC)}` }}>
+                            {$t(t?.match)}
                           </span>
                           <TripCardSV key={t?.name} trip={t} onOpen={t?.onOpen} />
                         </div>

@@ -1,7 +1,7 @@
 'use client';
 // Generated from the legacy template's isEnquiry block.
 import { Fragment } from 'react';
-import { t, at } from '../runtime';
+import { $t, $at, $css } from '../runtime';
 import { useLx } from '../context';
 
 export default function EnquiryView() {
@@ -29,20 +29,20 @@ export default function EnquiryView() {
                     01 · Enquiring about
                   </span>
                   <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                    <select onChange={v.setTrip} value={t(v.enq?.trip)} style={{ flex: "1 1 240px", height: "48px", padding: "0 12px", border: "1px solid #939393", borderRadius: "52.5px", background: "#FFFFFF", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", color: "#000000" }}>
+                    <select onChange={v.setTrip} value={$t(v.enq?.trip)} style={{ flex: "1 1 240px", height: "48px", padding: "0 12px", border: "1px solid #939393", borderRadius: "52.5px", background: "#FFFFFF", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", color: "#000000" }}>
                       {(v.tripOptions || []).map((o, $index) => (
                         <Fragment key={$index}>
-                          <option value={at(o?.v)}>
-                            {t(o?.l)}
+                          <option value={$at(o?.v)}>
+                            {$t(o?.l)}
                           </option>
                         </Fragment>
                       ))}
                     </select>
-                    <select onChange={v.setTraveller} value={t(v.enq?.traveller)} style={{ flex: "1 1 200px", height: "48px", padding: "0 12px", border: "1px solid #939393", borderRadius: "52.5px", background: "#FFFFFF", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", color: "#000000" }}>
+                    <select onChange={v.setTraveller} value={$t(v.enq?.traveller)} style={{ flex: "1 1 200px", height: "48px", padding: "0 12px", border: "1px solid #939393", borderRadius: "52.5px", background: "#FFFFFF", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", color: "#000000" }}>
                       {(v.travellerOptions || []).map((o, $index) => (
                         <Fragment key={$index}>
-                          <option value={at(o?.v)}>
-                            {t(o?.l)}
+                          <option value={$at(o?.v)}>
+                            {$t(o?.l)}
                           </option>
                         </Fragment>
                       ))}
@@ -56,8 +56,8 @@ export default function EnquiryView() {
                   <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                     {(v.forWhom || []).map((c, $index) => (
                       <Fragment key={$index}>
-                        <button onClick={c?.pick} style={{ height: "40px", padding: "0 16px", background: `${t(c?.bg)}`, color: `${t(c?.fg)}`, border: `1px solid ${t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "13px" }}>
-                          {t(c?.label)}
+                        <button onClick={c?.pick} style={{ height: "40px", padding: "0 16px", background: `${$t(c?.bg)}`, color: `${$t(c?.fg)}`, border: `1px solid ${$t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "13px" }}>
+                          {$t(c?.label)}
                         </button>
                       </Fragment>
                     ))}
@@ -73,14 +73,14 @@ export default function EnquiryView() {
                         {" "}
                         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                           <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", width: "64px" }}>
-                            {t(c?.label)}
+                            {$t(c?.label)}
                           </span>
                           <div style={{ display: "flex", alignItems: "center", border: "1px solid #ABABAB", borderRadius: "52.5px" }}>
                             <button onClick={c?.dec} style={{ width: "40px", height: "40px", background: "none", border: "none", fontFamily: "var(--font-outfit),sans-serif", fontSize: "16px" }}>
                               –
                             </button>
                             <span style={{ width: "32px", textAlign: "center", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "13px" }}>
-                              {t(c?.v)}
+                              {$t(c?.v)}
                             </span>
                             <button onClick={c?.inc} style={{ width: "40px", height: "40px", background: "none", border: "none", fontFamily: "var(--font-outfit),sans-serif", fontSize: "16px" }}>
                               +
@@ -97,13 +97,13 @@ export default function EnquiryView() {
                     {" "}
                     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                       <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase" }}>
-                        {t(g?.label)}
+                        {$t(g?.label)}
                       </span>
                       <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                         {(g?.chips || []).map((c, $index) => (
                           <Fragment key={$index}>
-                            <button onClick={c?.pick} style={{ height: "40px", padding: "0 16px", background: `${t(c?.bg)}`, color: `${t(c?.fg)}`, border: `1px solid ${t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "13px" }}>
-                              {t(c?.label)}
+                            <button onClick={c?.pick} style={{ height: "40px", padding: "0 16px", background: `${$t(c?.bg)}`, color: `${$t(c?.fg)}`, border: `1px solid ${$t(c?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "13px" }}>
+                              {$t(c?.label)}
                             </button>
                           </Fragment>
                         ))}
@@ -122,9 +122,12 @@ export default function EnquiryView() {
                         {" "}
                         <label style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                           <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "12px", color: "#363636" }}>
-                            {t(f?.label)}
+                            {$t(f?.label)}
                           </span>
-                          <input type={at(f?.type)} value={t(f?.value)} onChange={f?.onChange} placeholder={at(f?.ph)} style={{ height: "48px", padding: "0 14px", border: `1px solid ${t(f?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", color: "#000000", background: "#FFFFFF" }} />
+                          <input type={$at(f?.type)} value={$t(f?.value)} onChange={f?.onChange} placeholder={$at(f?.ph)} style={{ height: "48px", padding: "0 14px", border: `1px solid ${$t(f?.bd)}`, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", color: "#000000", background: "#FFFFFF" }} />
+                          {f?.hint ? (
+                            <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "11px", color: "#939393" }}>{$t(f?.hint)}</span>
+                          ) : null}
                         </label>
                         {" "}
                       </Fragment>
@@ -134,18 +137,23 @@ export default function EnquiryView() {
                     <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "12px", color: "#363636" }}>
                       Anything we should know? Pace, mobility, celebrations, dietary needs
                     </span>
-                    <textarea value={t(v.enq?.notes)} onChange={v.setNotes} rows="4" style={{ padding: "16px 20px", border: "1px solid #939393", borderRadius: "8.4px", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", resize: "vertical" }} />
+                    <textarea value={$t(v.enq?.notes)} onChange={v.setNotes} rows="4" style={{ padding: "16px 20px", border: "1px solid #939393", borderRadius: "8.4px", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "13px", resize: "vertical" }} />
                   </label>
                   {v.showError ? (
                     <>
                       <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12px", color: "#8c1c13" }}>
-                        Please add your name and a valid email so a planner can reply.
+                        Please add your full name, a valid email and a phone number so a planner can reply.
                       </span>
                     </>
                   ) : null}
+                  {v.sendErr ? (
+                    <span role="alert" style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12px", color: "#8c1c13" }}>
+                      We couldn’t send your brief. Please try again, or message us on WhatsApp.
+                    </span>
+                  ) : null}
                   <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap", marginTop: "8px" }}>
-                    <button onClick={v.submit} style={{ height: "48px", padding: "0 32px", background: "#000000", color: "#FFFFFF", border: "none", borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12.6px", letterSpacing: "0.1em", textTransform: "uppercase" }} className="lxp6">
-                      Send my brief
+                    <button onClick={v.submit} disabled={!v.canSend || undefined} style={{ height: "48px", padding: "0 32px", background: v.sendBg, color: "#FFFFFF", border: "none", cursor: v.sendCur, borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", fontFamily: "var(--font-outfit),sans-serif", fontWeight: "600", fontSize: "12.6px", letterSpacing: "0.1em", textTransform: "uppercase" }} className={v.canSend ? "lxp6" : undefined}>
+                      {v.sendLabel}
                     </button>
                     <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "300", fontSize: "11px", color: "#939393" }}>
                       No payment taken. Details used only to plan your trip.
@@ -163,10 +171,10 @@ export default function EnquiryView() {
                       {" "}
                       <div style={{ display: "flex", justifyContent: "space-between", gap: "12px", padding: "8px 0", borderBottom: "1px solid #E5E5E5", fontFamily: "var(--font-outfit),sans-serif", fontSize: "12px" }}>
                         <span style={{ fontWeight: "300", color: "#363636" }}>
-                          {t(s?.k)}
+                          {$t(s?.k)}
                         </span>
                         <span style={{ fontWeight: "600", textAlign: "right" }}>
-                          {t(s?.v)}
+                          {$t(s?.v)}
                         </span>
                       </div>
                       {" "}
@@ -182,10 +190,10 @@ export default function EnquiryView() {
                       {" "}
                       <div style={{ display: "grid", gridTemplateColumns: "32px 1fr", gap: "8px", borderTop: "1px solid #E5E5E5", paddingTop: "12px" }}>
                         <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", color: "#000000", paddingTop: "3px" }}>
-                          {t(n?.num)}
+                          {$t(n?.num)}
                         </span>
                         <span style={{ fontSize: "13px", lineHeight: "1.55" }}>
-                          {t(n?.text)}
+                          {$t(n?.text)}
                         </span>
                       </div>
                       {" "}
@@ -206,17 +214,17 @@ export default function EnquiryView() {
                 ✓
               </span>
               <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "500", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#000000" }}>
-                {"Reference "}{t(v.ref)}
+                {"Reference "}{$t(v.ref)}
               </span>
               <h1 style={{ fontFamily: "var(--font-outfit),sans-serif", margin: "0", fontWeight: "400", fontSize: "clamp(39.8px,5vw,56px)", lineHeight: "1.05" }}>
-                {"Thank you, "}{t(v.firstName)}.
+                {"Thank you, "}{$t(v.firstName)}.
               </h1>
               <p style={{ margin: "0", fontSize: "15.4px", lineHeight: "1.75", color: "#111111" }}>
-                {"Your brief for "}
+                {"We have received your query. Our team will be in touch with you soon about "}
                 <em>
-                  {t(v.sentTrip)}
+                  {$t(v.sentTrip)}
                 </em>
-                {" is with a planner. Expect a personal reply within one working day, then your proposal."}
+                .
               </p>
               <div style={{ width: "100%", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,180px),1fr))", gap: "24px", textAlign: "left", marginTop: "16px" }}>
                 {(v.nextSteps || []).map((n, $index) => (
@@ -224,10 +232,10 @@ export default function EnquiryView() {
                     {" "}
                     <div style={{ borderTop: "1px solid #000000", paddingTop: "12px", display: "flex", flexDirection: "column", gap: "6px" }}>
                       <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", color: "#000000" }}>
-                        {t(n?.num)}
+                        {$t(n?.num)}
                       </span>
                       <span style={{ fontSize: "13px", lineHeight: "1.55" }}>
-                        {t(n?.text)}
+                        {$t(n?.text)}
                       </span>
                     </div>
                     {" "}

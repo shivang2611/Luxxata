@@ -1,7 +1,7 @@
 'use client';
 // Generated from the legacy template's isCollections block.
 import { Fragment } from 'react';
-import { t, at } from '../runtime';
+import { $t, $at, $css } from '../runtime';
 import { useLx } from '../context';
 
 export default function CollectionsView() {
@@ -27,18 +27,18 @@ export default function CollectionsView() {
               <button onClick={c?.go} style={{ width: "100%", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,200px),1fr))", gap: "16px", alignItems: "center", padding: "24px 0", background: "none", border: "none", borderBottom: "1px solid #E5E5E5", textAlign: "left", color: "#000000" }} className="lxp5">
                 <span style={{ display: "flex", gap: "16px", alignItems: "baseline" }}>
                   <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", color: "#939393" }}>
-                    {t(c?.num)}
+                    {$t(c?.num)}
                   </span>
                   <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontSize: "22px", lineHeight: "1.2" }}>
-                    {t(c?.name)}
+                    {$t(c?.name)}
                   </span>
                 </span>
                 <span style={{ fontSize: "13px", lineHeight: "1.55", color: "#363636" }}>
-                  {t(c?.line)}
+                  {$t(c?.line)}
                 </span>
                 <span style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "16px" }}>
-                  <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", padding: "5px 8px", borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", border: `1px solid ${t(c?.statusBd)}`, color: `${t(c?.statusFg)}` }}>
-                    {t(c?.status)}
+                  <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontWeight: "400", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", padding: "5px 8px", borderRadius: "52.5px", whiteSpace: "nowrap", flex: "none", border: `1px solid ${$t(c?.statusBd)}`, color: `${$t(c?.statusFg)}` }}>
+                    {$t(c?.status)}
                   </span>
                   <span style={{ fontFamily: "var(--font-outfit),sans-serif", fontSize: "14px" }}>
                     →
